@@ -12,26 +12,30 @@ Widget buildNeonPressableUseCase(BuildContext context) {
         children: [
           NeonPressable(
             onPressed: () {},
-            child: Container(
-              padding: const EdgeInsets.all(16),
+            child: DecoratedBox(
               decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: const Text('Pressable'),
+              child: const Padding(
+                padding: EdgeInsets.all(16),
+                child: Text('Pressable'),
+              ),
             ),
           ),
           const SizedBox(height: 16),
           NeonPressable(
             onPressedDown: () {},
             onPressedUp: () {},
-            child: Container(
-              padding: const EdgeInsets.all(16),
+            child: DecoratedBox(
               decoration: BoxDecoration(
                 color: Colors.green,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: const Text('With callbacks'),
+              child: const Padding(
+                padding: EdgeInsets.all(16),
+                child: Text('With callbacks'),
+              ),
             ),
           ),
           const SizedBox(height: 16),
