@@ -76,7 +76,7 @@ class NeonButton extends StatelessWidget {
             constraints: BoxConstraints(
               minHeight: neonButtonTheme?.minHeight ?? 48.0,
               maxHeight:
-                  maxHeight ?? neonButtonTheme?.maxHeight ?? double.infinity,
+                  maxHeight ?? neonButtonTheme?.maxHeight ?? 48.0,
               maxWidth: maxWidth ?? double.infinity,
             ),
             child: Center(child: child),
