@@ -15,6 +15,8 @@ import 'package:widgetbook_catalog/neon_button_use_case.dart'
     as _widgetbook_catalog_neon_button_use_case;
 import 'package:widgetbook_catalog/neon_checkbox_use_case.dart'
     as _widgetbook_catalog_neon_checkbox_use_case;
+import 'package:widgetbook_catalog/neon_container_use_case.dart'
+    as _widgetbook_catalog_neon_container_use_case;
 import 'package:widgetbook_catalog/neon_decoration_use_case.dart'
     as _widgetbook_catalog_neon_decoration_use_case;
 
@@ -39,6 +41,16 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'Default',
             builder: _widgetbook_catalog_neon_checkbox_use_case
                 .buildNeonCheckboxUseCase,
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookComponent(
+        name: 'NeonContainer',
+        useCases: [
+          _widgetbook.WidgetbookUseCase(
+            name: 'Default',
+            builder: _widgetbook_catalog_neon_container_use_case
+                .buildNeonContainerUseCase,
           ),
         ],
       ),
