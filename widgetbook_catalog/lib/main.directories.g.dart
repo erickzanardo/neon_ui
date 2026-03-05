@@ -19,6 +19,8 @@ import 'package:widgetbook_catalog/neon_container_use_case.dart'
     as _widgetbook_catalog_neon_container_use_case;
 import 'package:widgetbook_catalog/neon_decoration_use_case.dart'
     as _widgetbook_catalog_neon_decoration_use_case;
+import 'package:widgetbook_catalog/neon_divider_use_case.dart'
+    as _widgetbook_catalog_neon_divider_use_case;
 import 'package:widgetbook_catalog/neon_icon_use_case.dart'
     as _widgetbook_catalog_neon_icon_use_case;
 import 'package:widgetbook_catalog/neon_pressable_use_case.dart'
@@ -65,6 +67,16 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'Default',
             builder: _widgetbook_catalog_neon_decoration_use_case
                 .buildNeonDecoratedBoxUseCase,
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookComponent(
+        name: 'NeonDivider',
+        useCases: [
+          _widgetbook.WidgetbookUseCase(
+            name: 'Default',
+            builder: _widgetbook_catalog_neon_divider_use_case
+                .buildNeonDividerUseCase,
           ),
         ],
       ),
