@@ -24,6 +24,7 @@ class NeonButton extends StatelessWidget {
     this.onPressedDown,
     this.onPressedUp,
     this.maxWidth = 200,
+    this.maxHeight,
     super.key,
   });
 
@@ -44,6 +45,9 @@ class NeonButton extends StatelessWidget {
 
   /// The maximum width of the button.
   final double? maxWidth;
+
+  /// The maximum height of the button.
+  final double? maxHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +75,7 @@ class NeonButton extends StatelessWidget {
           child: ConstrainedBox(
             constraints: BoxConstraints(
               minHeight: neonButtonTheme?.minHeight ?? 48.0,
+              maxHeight: maxHeight ?? neonButtonTheme?.maxHeight ?? 48.0,
               maxWidth: maxWidth ?? double.infinity,
             ),
             child: Center(child: child),
