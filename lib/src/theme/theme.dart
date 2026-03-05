@@ -99,10 +99,7 @@ class NeonButtonTheme extends ThemeExtension<NeonButtonTheme> {
 /// {@endtemplate}
 class NeonIconTheme extends ThemeExtension<NeonIconTheme> {
   /// {@macro neon_icon_theme}
-  const NeonIconTheme({
-    this.size = 32.0,
-    this.padding = 8.0,
-  });
+  const NeonIconTheme({this.size = 32.0, this.padding = 8.0});
 
   /// The size of the neon icon.
   final double size;
