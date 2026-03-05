@@ -52,11 +52,15 @@ class NeonButtonTheme extends ThemeExtension<NeonButtonTheme> {
   /// {@macro neon_button_theme}
   const NeonButtonTheme({
     this.minHeight = 48.0,
+    this.maxHeight,
     this.borderRadius = 8.0,
   });
 
   /// The height of the neon button.
   final double minHeight;
+
+  /// The maximum height of the neon button.
+  final double? maxHeight;
 
   /// The border radius of the neon button.
   final double borderRadius;
@@ -64,10 +68,12 @@ class NeonButtonTheme extends ThemeExtension<NeonButtonTheme> {
   @override
   ThemeExtension<NeonButtonTheme> copyWith({
     double? minHeight,
+    double? maxHeight,
     double? borderRadius,
   }) {
     return NeonButtonTheme(
       minHeight: minHeight ?? this.minHeight,
+      maxHeight: maxHeight ?? this.maxHeight,
       borderRadius: borderRadius ?? this.borderRadius,
     );
   }
@@ -82,6 +88,7 @@ class NeonButtonTheme extends ThemeExtension<NeonButtonTheme> {
     }
     return NeonButtonTheme(
       minHeight: lerpDouble(minHeight, other.minHeight, t)!,
+      maxHeight: lerpDouble(maxHeight, other.maxHeight, t),
       borderRadius: lerpDouble(borderRadius, other.borderRadius, t)!,
     );
   }
