@@ -31,3 +31,4 @@ Neon UI is a Flutter UI library inspired by Neon Vibes.
 2. Export from `lib/src/widgets/widgets.dart`
 3. Add Widgetbook use case in `widgetbook_catalog/lib/`
 4. Run `dart run build_runner build` to regenerate directories
+5. **Update the Widgets section in README.md** - Add the widget to the index list (alphabetically ordered) and add a new section with its name (h3), description, and a code snippet example
