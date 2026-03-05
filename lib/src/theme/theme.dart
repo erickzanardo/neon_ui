@@ -216,7 +216,7 @@ class NeonUITheme {
 
   /// Converts this theme to a Flutter [ThemeData].
   ThemeData toThemeData() {
-    final textTheme = GoogleFonts.tiltNeonTextTheme().apply(
+    final textTheme = GoogleFonts.orbitronTextTheme().apply(
       bodyColor: primaryColor,
       displayColor: primaryColor.withValues(alpha: 0.87),
     );
