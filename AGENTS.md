@@ -18,6 +18,7 @@ Neon UI is a Flutter UI library inspired by Neon Vibes.
 - Uses templates for documentation (e.g., `/// {@template name}` / `/// {@endtemplate}`)
 - Follows standard Flutter/Dart conventions
 - Prefer import from barrel files
+- **Avoid `Container`** - Compose using `Padding`, `DecoratedBox`, `Align`, etc. instead of `Container`
 
 ## Project Structure
 
