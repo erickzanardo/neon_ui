@@ -1,0 +1,33 @@
+// dart format width=80
+// coverage:ignore-file
+// ignore_for_file: type=lint
+// ignore_for_file: unused_import, prefer_relative_imports, directives_ordering
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+// **************************************************************************
+// AppGenerator
+// **************************************************************************
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:widgetbook/widgetbook.dart' as _widgetbook;
+import 'package:widgetbook_catalog/neon_decoration_use_case.dart'
+    as _widgetbook_catalog_neon_decoration_use_case;
+
+final directories = <_widgetbook.WidgetbookNode>[
+  _widgetbook.WidgetbookFolder(
+    name: 'widgets',
+    children: [
+      _widgetbook.WidgetbookComponent(
+        name: 'NeonDecoratedBox',
+        useCases: [
+          _widgetbook.WidgetbookUseCase(
+            name: 'Default',
+            builder: _widgetbook_catalog_neon_decoration_use_case
+                .buildNeonDecoratedBoxUseCase,
+          ),
+        ],
+      ),
+    ],
+  ),
+];

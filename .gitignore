@@ -31,10 +31,6 @@ migrate_working_dir/
 /build/
 pubspec.lock
 
-# Generated code
-*.g.dart
-*.mocks.dart
-
 # Web related
 lib/generated_plugin_registrant.dart
 
