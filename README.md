@@ -14,6 +14,111 @@ Install via `flutter pub add`:
 dart pub add neon_ui
 ```
 
+## Widgets
+
+- [NeonButton](#neonbutton)
+- [NeonCheckbox](#neoncheckbox)
+- [NeonContainer](#neoncontainer)
+- [NeonDecoratedBox](#neondecoratedbox)
+- [NeonDialog](#neondialog)
+- [NeonDivider](#neondivider)
+- [NeonIcon](#neonicon)
+- [NeonIconButton](#neoniconbutton)
+- [NeonPressable](#neonpressable)
+
+### NeonButton
+
+A neon styled button widget with primary and secondary variants.
+
+```dart
+NeonButton(
+  onPressed: () => print('Pressed'),
+  child: Text('Click me'),
+)
+```
+
+### NeonCheckbox
+
+A checkbox widget with neon styling.
+
+```dart
+NeonCheckbox(
+  value: isChecked,
+  onChanged: (value) => setState(() => isChecked = value ?? false),
+)
+```
+
+### NeonContainer
+
+A container widget with neon styling.
+
+```dart
+NeonContainer(
+  child: Text('Content'),
+)
+```
+
+### NeonDecoratedBox
+
+A container that applies neon decoration to its child.
+
+```dart
+NeonDecoratedBox(
+  child: Text('Decorated'),
+)
+```
+
+### NeonDialog
+
+A dialog widget with neon styling. Includes helper methods for showing dialogs and confirmation dialogs.
+
+```dart
+NeonDialog.show(
+  context: context,
+  builder: (context) => Text('Dialog content'),
+)
+```
+
+### NeonDivider
+
+A divider widget with neon styling.
+
+```dart
+NeonDivider()
+```
+
+### NeonIcon
+
+A widget that displays a neon-styled icon.
+
+```dart
+NeonIcon(
+  icon: Icons.star,
+)
+```
+
+### NeonIconButton
+
+A button that displays a neon-styled icon.
+
+```dart
+NeonIconButton(
+  icon: Icons.settings,
+  onPressed: () => print('Settings'),
+)
+```
+
+### NeonPressable
+
+A widget that provides neon pressable effects with opacity changes on press.
+
+```dart
+NeonPressable(
+  onPressed: () => print('Pressed'),
+  child: Text('Press me'),
+)
+```
+
 ## Full widget catalog:
 
 You can find a Widgetbook Catalog with the widget from this package here: https://neon-ui.pages.dev/
