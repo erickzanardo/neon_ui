@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -6,7 +7,7 @@ import 'package:neon_ui/neon_ui.dart';
 /// {@template neon_circular_progress_indicator}
 /// A widget that displays a circular progress indicator with neon glow effect.
 /// {@endtemplate}
-class NeonCircularProgressIndicator extends StatelessWidget {
+class NeonCircularProgressIndicator extends StatefulWidget {
   /// {@macro neon_circular_progress_indicator}
   const NeonCircularProgressIndicator({
     super.key,
@@ -16,6 +17,7 @@ class NeonCircularProgressIndicator extends StatelessWidget {
     this.backgroundColor,
     this.value,
     this.blurSigma,
+    this.duration,
   });
 
   /// The color of the neon indicator. Overrides the theme color if provided.
@@ -31,11 +33,57 @@ class NeonCircularProgressIndicator extends StatelessWidget {
   final Color? backgroundColor;
 
   /// The value of the progress indicator (0.0 to 1.0).
-  /// If null, the indicator is indeterminate.
+  /// If null, the indicator shows an endless animation.
   final double? value;
 
   /// The blur sigma of the neon glow.
   final double? blurSigma;
+
+  /// The duration of the endless animation.
+  final Duration? duration;
+
+  Duration get _effectiveDuration => duration ?? const Duration(seconds: 2);
+
+  @override
+  State<NeonCircularProgressIndicator> createState() =>
+      _NeonCircularProgressIndicatorState();
+}
+
+class _NeonCircularProgressIndicatorState
+    extends State<NeonCircularProgressIndicator>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: widget._effectiveDuration,
+    );
+
+    if (widget.value == null) {
+      unawaited(_controller.repeat());
+    }
+  }
+
+  @override
+  void didUpdateWidget(NeonCircularProgressIndicator oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.value == null && !_controller.isAnimating) {
+      unawaited(_controller.repeat());
+    } else if (widget.value != null && _controller.isAnimating) {
+      _controller
+        ..stop()
+        ..value = widget.value!;
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,23 +91,30 @@ class NeonCircularProgressIndicator extends StatelessWidget {
       context,
     ).extension<NeonCircularProgressIndicatorTheme>();
     final effectiveColor =
-        color ?? theme?.color ?? Theme.of(context).colorScheme.primary;
-    final effectiveStrokeWidth = strokeWidth ?? theme?.strokeWidth ?? 4.0;
-    final effectiveRadius = radius ?? theme?.radius;
-    final effectiveBackgroundColor = backgroundColor ?? theme?.backgroundColor;
-    final effectiveBlurSigma = blurSigma ?? theme?.blurSigma ?? 4.0;
+        widget.color ?? theme?.color ?? Theme.of(context).colorScheme.primary;
+    final effectiveStrokeWidth =
+        widget.strokeWidth ?? theme?.strokeWidth ?? 4.0;
+    final effectiveRadius = widget.radius ?? theme?.radius;
+    final effectiveBackgroundColor =
+        widget.backgroundColor ?? theme?.backgroundColor;
+    final effectiveBlurSigma = widget.blurSigma ?? theme?.blurSigma ?? 4.0;
 
     return SizedBox(
       width: effectiveRadius != null ? effectiveRadius * 2 : null,
       height: effectiveRadius != null ? effectiveRadius * 2 : null,
-      child: CustomPaint(
-        painter: _NeonCircularProgressPainter(
-          color: effectiveColor,
-          strokeWidth: effectiveStrokeWidth,
-          backgroundColor: effectiveBackgroundColor,
-          value: value,
-          blurSigma: effectiveBlurSigma,
-        ),
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return CustomPaint(
+            painter: _NeonCircularProgressPainter(
+              color: effectiveColor,
+              strokeWidth: effectiveStrokeWidth,
+              backgroundColor: effectiveBackgroundColor,
+              value: widget.value ?? _controller.value,
+              blurSigma: effectiveBlurSigma,
+            ),
+          );
+        },
       ),
     );
   }
