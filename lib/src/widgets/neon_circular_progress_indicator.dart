@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neon_ui/neon_ui.dart';
 
 /// {@template neon_circular_progress_indicator}
 /// A widget that displays a circular progress indicator with neon glow effect.
@@ -6,20 +7,20 @@ import 'package:flutter/material.dart';
 class NeonCircularProgressIndicator extends StatelessWidget {
   /// {@macro neon_circular_progress_indicator}
   const NeonCircularProgressIndicator({
+    super.key,
     this.color,
-    this.strokeWidth = 4.0,
+    this.strokeWidth,
     this.radius,
     this.backgroundColor,
     this.value,
     this.blurSigma,
-    super.key,
   });
 
   /// The color of the neon indicator. Overrides the theme color if provided.
   final Color? color;
 
   /// The width of the progress indicator stroke.
-  final double strokeWidth;
+  final double? strokeWidth;
 
   /// The radius of the progress indicator.
   final double? radius;
@@ -36,17 +37,23 @@ class NeonCircularProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(
+      context,
+    ).extension<NeonCircularProgressIndicatorTheme>();
     final effectiveColor = color ?? Theme.of(context).colorScheme.primary;
-    final effectiveBlurSigma = blurSigma ?? 4.0;
+    final effectiveStrokeWidth = strokeWidth ?? theme?.strokeWidth ?? 4.0;
+    final effectiveRadius = radius ?? theme?.radius;
+    final effectiveBackgroundColor = backgroundColor ?? theme?.backgroundColor;
+    final effectiveBlurSigma = blurSigma ?? theme?.blurSigma ?? 4.0;
 
     return SizedBox(
-      width: radius != null ? radius! * 2 : null,
-      height: radius != null ? radius! * 2 : null,
+      width: effectiveRadius != null ? effectiveRadius * 2 : null,
+      height: effectiveRadius != null ? effectiveRadius * 2 : null,
       child: CustomPaint(
         painter: _NeonCircularProgressPainter(
           color: effectiveColor,
-          strokeWidth: strokeWidth,
-          backgroundColor: backgroundColor,
+          strokeWidth: effectiveStrokeWidth,
+          backgroundColor: effectiveBackgroundColor,
           value: value,
           blurSigma: effectiveBlurSigma,
         ),

@@ -3,6 +3,63 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/// {@template neon_circular_progress_indicator_theme}
+/// Theme extension for neon circular progress indicator styles.
+/// {@endtemplate}
+class NeonCircularProgressIndicatorTheme
+    extends ThemeExtension<NeonCircularProgressIndicatorTheme> {
+  /// {@macro neon_circular_progress_indicator_theme}
+  const NeonCircularProgressIndicatorTheme({
+    this.strokeWidth = 4.0,
+    this.radius,
+    this.backgroundColor,
+    this.blurSigma = 4.0,
+  });
+
+  /// The width of the progress indicator stroke.
+  final double strokeWidth;
+
+  /// The radius of the progress indicator.
+  final double? radius;
+
+  /// The background color of the progress indicator.
+  final Color? backgroundColor;
+
+  /// The blur sigma of the neon glow.
+  final double blurSigma;
+
+  @override
+  ThemeExtension<NeonCircularProgressIndicatorTheme> copyWith({
+    double? strokeWidth,
+    double? radius,
+    Color? backgroundColor,
+    double? blurSigma,
+  }) {
+    return NeonCircularProgressIndicatorTheme(
+      strokeWidth: strokeWidth ?? this.strokeWidth,
+      radius: radius ?? this.radius,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
+      blurSigma: blurSigma ?? this.blurSigma,
+    );
+  }
+
+  @override
+  ThemeExtension<NeonCircularProgressIndicatorTheme> lerp(
+    covariant ThemeExtension<NeonCircularProgressIndicatorTheme>? other,
+    double t,
+  ) {
+    if (other is! NeonCircularProgressIndicatorTheme) {
+      return this;
+    }
+    return NeonCircularProgressIndicatorTheme(
+      strokeWidth: lerpDouble(strokeWidth, other.strokeWidth, t)!,
+      radius: lerpDouble(radius, other.radius, t),
+      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      blurSigma: lerpDouble(blurSigma, other.blurSigma, t)!,
+    );
+  }
+}
+
 /// {@template neon_container_theme}
 /// Theme extension for neon container styles.
 /// {@endtemplate}
@@ -201,6 +258,8 @@ class NeonUITheme {
     this.iconTheme = const NeonIconTheme(),
     this.buttonTheme = const NeonButtonTheme(),
     this.containerTheme = const NeonContainerTheme(),
+    this.circularProgressIndicatorTheme =
+        const NeonCircularProgressIndicatorTheme(),
   });
 
   /// The primary color of the Neon UI theme.
@@ -218,6 +277,9 @@ class NeonUITheme {
   /// The neon container theme.
   final NeonContainerTheme containerTheme;
 
+  /// The neon circular progress indicator theme.
+  final NeonCircularProgressIndicatorTheme circularProgressIndicatorTheme;
+
   /// Converts this theme to a Flutter [ThemeData].
   ThemeData toThemeData() {
     final textTheme = GoogleFonts.orbitronTextTheme().apply(
@@ -233,6 +295,7 @@ class NeonUITheme {
         iconTheme,
         buttonTheme,
         containerTheme,
+        circularProgressIndicatorTheme,
       ],
       colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
     );

@@ -18,6 +18,7 @@ dart pub add neon_ui
 
 - [NeonButton](#neonbutton)
 - [NeonCheckbox](#neoncheckbox)
+- [NeonCircularProgressIndicator](#neoncircularprogressindicator)
 - [NeonContainer](#neoncontainer)
 - [NeonDecoratedBox](#neondecoratedbox)
 - [NeonDialog](#neondialog)
@@ -45,6 +46,17 @@ A checkbox widget with neon styling.
 NeonCheckbox(
   value: isChecked,
   onChanged: (value) => setState(() => isChecked = value ?? false),
+)
+```
+
+### NeonCircularProgressIndicator
+
+A circular progress indicator widget with neon glow effect.
+
+```dart
+NeonCircularProgressIndicator(
+  color: Colors.blue,
+  value: 0.7,
 )
 ```
 
