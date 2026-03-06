@@ -12,7 +12,7 @@ class NeonCircularProgressIndicatorTheme
   const NeonCircularProgressIndicatorTheme({
     this.color,
     this.strokeWidth = 4.0,
-    this.radius,
+    this.radius = 32,
     this.backgroundColor,
     this.blurSigma = 4.0,
   });
@@ -24,7 +24,7 @@ class NeonCircularProgressIndicatorTheme
   final double strokeWidth;
 
   /// The radius of the progress indicator.
-  final double? radius;
+  final double radius;
 
   /// The background color of the progress indicator.
   final Color? backgroundColor;
@@ -60,7 +60,7 @@ class NeonCircularProgressIndicatorTheme
     return NeonCircularProgressIndicatorTheme(
       color: Color.lerp(color, other.color, t),
       strokeWidth: lerpDouble(strokeWidth, other.strokeWidth, t)!,
-      radius: lerpDouble(radius, other.radius, t),
+      radius: lerpDouble(radius, other.radius, t)!,
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
       blurSigma: lerpDouble(blurSigma, other.blurSigma, t)!,
     );

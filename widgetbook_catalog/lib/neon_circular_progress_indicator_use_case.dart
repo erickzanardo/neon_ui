@@ -8,26 +8,22 @@ Widget buildNeonCircularProgressIndicatorUseCase(BuildContext context) {
   return Scaffold(
     body: Center(
       child: Column(
+        spacing: 16,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          NeonCircularProgressIndicator(),
-          const SizedBox(height: 16),
+          NeonCircularProgressIndicator(value: .5),
           NeonCircularProgressIndicator(color: Colors.blue),
-          const SizedBox(height: 16),
           NeonCircularProgressIndicator(
             color: Colors.yellow,
             strokeWidth: 6,
             radius: 32,
           ),
-          const SizedBox(height: 16),
           NeonCircularProgressIndicator(color: Colors.green, value: 0.7),
-          const SizedBox(height: 16),
           NeonCircularProgressIndicator(
             color: Colors.purple,
             value: 0.5,
             backgroundColor: Colors.grey,
           ),
-          const SizedBox(height: 16),
           const _AnimatedNeonCircularProgressIndicator(),
         ],
       ),

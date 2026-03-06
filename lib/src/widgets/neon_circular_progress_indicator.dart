@@ -96,7 +96,7 @@ class _NeonCircularProgressPainter extends CustomPainter {
 
     final shadowPaint = Paint()
       ..strokeWidth = strokeWidth
-      ..color = color
+      ..color = color.withValues(alpha: .8)
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
       ..maskFilter = MaskFilter.blur(BlurStyle.normal, blurSigma);
