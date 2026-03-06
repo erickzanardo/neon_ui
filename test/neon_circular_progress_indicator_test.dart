@@ -158,7 +158,7 @@ void main() {
       const theme = NeonCircularProgressIndicatorTheme();
 
       expect(theme.strokeWidth, 4.0);
-      expect(theme.radius, null);
+      expect(theme.radius, 32.0);
       expect(theme.backgroundColor, null);
       expect(theme.blurSigma, 4.0);
       expect(theme.color, null);
