@@ -51,9 +51,15 @@ NeonCheckbox(
 
 ### NeonCircularProgressIndicator
 
-A circular progress indicator widget with neon glow effect.
+A circular progress indicator widget with neon glow effect. When `value` is null (the default), the indicator shows an endless animation. When `value` is provided (0.0 to 1.0), it shows a determinate progress.
 
 ```dart
+// Endless animation (default)
+NeonCircularProgressIndicator(
+  color: Colors.blue,
+)
+
+// Determinate progress
 NeonCircularProgressIndicator(
   color: Colors.blue,
   value: 0.7,

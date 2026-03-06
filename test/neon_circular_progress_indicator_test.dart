@@ -98,6 +98,7 @@ void main() {
       const radius = 32.0;
       const blurSigma = 10.0;
       const value = 0.75;
+      const duration = Duration(seconds: 3);
 
       await tester.pumpWidget(
         const MaterialApp(
@@ -108,6 +109,7 @@ void main() {
               radius: radius,
               blurSigma: blurSigma,
               value: value,
+              duration: duration,
             ),
           ),
         ),
@@ -122,6 +124,7 @@ void main() {
       expect(widget.radius, radius);
       expect(widget.blurSigma, blurSigma);
       expect(widget.value, value);
+      expect(widget.duration, duration);
     });
   });
 
