@@ -1,5 +1,6 @@
 export 'neon_button.dart';
 export 'neon_checkbox.dart';
+export 'neon_circular_progress_indicator.dart';
 export 'neon_container.dart';
 export 'neon_decoration.dart';
 export 'neon_dialog.dart';
