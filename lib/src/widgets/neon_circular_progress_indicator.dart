@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:neon_ui/neon_ui.dart';
 
@@ -40,7 +42,8 @@ class NeonCircularProgressIndicator extends StatelessWidget {
     final theme = Theme.of(
       context,
     ).extension<NeonCircularProgressIndicatorTheme>();
-    final effectiveColor = color ?? Theme.of(context).colorScheme.primary;
+    final effectiveColor =
+        color ?? theme?.color ?? Theme.of(context).colorScheme.primary;
     final effectiveStrokeWidth = strokeWidth ?? theme?.strokeWidth ?? 4.0;
     final effectiveRadius = radius ?? theme?.radius;
     final effectiveBackgroundColor = backgroundColor ?? theme?.backgroundColor;
@@ -109,10 +112,10 @@ class _NeonCircularProgressPainter extends CustomPainter {
     }
 
     if (value != null) {
-      final sweepAngle = 2 * 3.141592653589793 * value!;
+      final sweepAngle = 2 * pi * value!;
       canvas.drawArc(
         Rect.fromCircle(center: center, radius: effectiveRadius),
-        -3.141592653589793 / 2,
+        -pi / 2,
         sweepAngle,
         false,
         progressPaint,

@@ -39,7 +39,7 @@ void main() {
     testWidgets('renders with custom stroke width', (tester) async {
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(body: NeonCircularProgressIndicator(strokeWidth: 8.0)),
+          home: Scaffold(body: NeonCircularProgressIndicator(strokeWidth: 8)),
         ),
       );
 
@@ -49,7 +49,7 @@ void main() {
     testWidgets('renders with custom radius', (tester) async {
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(body: NeonCircularProgressIndicator(radius: 32.0)),
+          home: Scaffold(body: NeonCircularProgressIndicator(radius: 32)),
         ),
       );
 
@@ -76,9 +76,9 @@ void main() {
         primaryColor: Colors.pink,
         circularProgressIndicatorTheme:
             const NeonCircularProgressIndicatorTheme(
-              strokeWidth: 6.0,
-              radius: 40.0,
-              blurSigma: 8.0,
+              strokeWidth: 6,
+              radius: 40,
+              blurSigma: 8,
             ),
       );
 
@@ -128,14 +128,12 @@ void main() {
   group('NeonCircularProgressIndicatorTheme', () {
     test('copyWith returns correct values', () {
       const theme = NeonCircularProgressIndicatorTheme(
-        strokeWidth: 4.0,
-        radius: 20.0,
-        blurSigma: 5.0,
+        radius: 20,
+        blurSigma: 5,
       );
 
       final copied =
-          theme.copyWith(strokeWidth: 8.0)
-              as NeonCircularProgressIndicatorTheme;
+          theme.copyWith(strokeWidth: 8) as NeonCircularProgressIndicatorTheme;
 
       expect(copied.strokeWidth, 8.0);
       expect(copied.radius, 20.0);
@@ -143,13 +141,10 @@ void main() {
     });
 
     test('lerp returns correct values', () {
-      const theme1 = NeonCircularProgressIndicatorTheme(
-        strokeWidth: 4.0,
-        blurSigma: 4.0,
-      );
+      const theme1 = NeonCircularProgressIndicatorTheme();
       const theme2 = NeonCircularProgressIndicatorTheme(
-        strokeWidth: 8.0,
-        blurSigma: 8.0,
+        strokeWidth: 8,
+        blurSigma: 8,
       );
 
       final lerped =
@@ -166,6 +161,7 @@ void main() {
       expect(theme.radius, null);
       expect(theme.backgroundColor, null);
       expect(theme.blurSigma, 4.0);
+      expect(theme.color, null);
     });
   });
 }

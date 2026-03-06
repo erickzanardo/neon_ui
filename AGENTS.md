@@ -15,6 +15,7 @@ Neon UI is a Flutter UI library inspired by Neon Vibes.
 ## Code Conventions
 
 - Uses [Very Good Analysis](https://pub.dev/packages/very_good_analysis) - do not disable lint rules
+- **Fix all analyzer issues including `info` level lints** - run `flutter analyze lib/ test/` before submitting
 - Uses templates for documentation (e.g., `/// {@template name}` / `/// {@endtemplate}`)
 - Follows standard Flutter/Dart conventions
 - Prefer import from barrel files

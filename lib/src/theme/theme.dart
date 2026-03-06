@@ -10,11 +10,15 @@ class NeonCircularProgressIndicatorTheme
     extends ThemeExtension<NeonCircularProgressIndicatorTheme> {
   /// {@macro neon_circular_progress_indicator_theme}
   const NeonCircularProgressIndicatorTheme({
+    this.color,
     this.strokeWidth = 4.0,
     this.radius,
     this.backgroundColor,
     this.blurSigma = 4.0,
   });
+
+  /// The color of the neon indicator.
+  final Color? color;
 
   /// The width of the progress indicator stroke.
   final double strokeWidth;
@@ -30,12 +34,14 @@ class NeonCircularProgressIndicatorTheme
 
   @override
   ThemeExtension<NeonCircularProgressIndicatorTheme> copyWith({
+    Color? color,
     double? strokeWidth,
     double? radius,
     Color? backgroundColor,
     double? blurSigma,
   }) {
     return NeonCircularProgressIndicatorTheme(
+      color: color ?? this.color,
       strokeWidth: strokeWidth ?? this.strokeWidth,
       radius: radius ?? this.radius,
       backgroundColor: backgroundColor ?? this.backgroundColor,
@@ -52,6 +58,7 @@ class NeonCircularProgressIndicatorTheme
       return this;
     }
     return NeonCircularProgressIndicatorTheme(
+      color: Color.lerp(color, other.color, t),
       strokeWidth: lerpDouble(strokeWidth, other.strokeWidth, t)!,
       radius: lerpDouble(radius, other.radius, t),
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),

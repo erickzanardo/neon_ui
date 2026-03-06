@@ -10,6 +10,8 @@ Widget buildNeonCircularProgressIndicatorUseCase(BuildContext context) {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          NeonCircularProgressIndicator(),
+          const SizedBox(height: 16),
           NeonCircularProgressIndicator(color: Colors.blue),
           const SizedBox(height: 16),
           NeonCircularProgressIndicator(
@@ -25,8 +27,52 @@ Widget buildNeonCircularProgressIndicatorUseCase(BuildContext context) {
             value: 0.5,
             backgroundColor: Colors.grey,
           ),
+          const SizedBox(height: 16),
+          const _AnimatedNeonCircularProgressIndicator(),
         ],
       ),
     ),
   );
+}
+
+class _AnimatedNeonCircularProgressIndicator extends StatefulWidget {
+  const _AnimatedNeonCircularProgressIndicator();
+
+  @override
+  State<_AnimatedNeonCircularProgressIndicator> createState() =>
+      _AnimatedNeonCircularProgressIndicatorState();
+}
+
+class _AnimatedNeonCircularProgressIndicatorState
+    extends State<_AnimatedNeonCircularProgressIndicator>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..repeat();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) {
+        return NeonCircularProgressIndicator(
+          color: Colors.red,
+          value: _controller.value,
+        );
+      },
+    );
+  }
 }
