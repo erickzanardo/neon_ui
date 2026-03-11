@@ -29,6 +29,8 @@ import 'package:widgetbook_catalog/neon_icon_use_case.dart'
     as _widgetbook_catalog_neon_icon_use_case;
 import 'package:widgetbook_catalog/neon_pressable_use_case.dart'
     as _widgetbook_catalog_neon_pressable_use_case;
+import 'package:widgetbook_catalog/neon_radio_use_case.dart'
+    as _widgetbook_catalog_neon_radio_use_case;
 
 final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
@@ -127,6 +129,16 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'Default',
             builder: _widgetbook_catalog_neon_pressable_use_case
                 .buildNeonPressableUseCase,
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookComponent(
+        name: 'NeonRadio',
+        useCases: [
+          _widgetbook.WidgetbookUseCase(
+            name: 'Default',
+            builder:
+                _widgetbook_catalog_neon_radio_use_case.buildNeonRadioUseCase,
           ),
         ],
       ),

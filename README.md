@@ -26,6 +26,7 @@ dart pub add neon_ui
 - [NeonIcon](#neonicon)
 - [NeonIconButton](#neoniconbutton)
 - [NeonPressable](#neonpressable)
+- [NeonRadio](#neonradio)
 
 ### NeonButton
 
@@ -134,6 +135,17 @@ A widget that provides neon pressable effects with opacity changes on press.
 NeonPressable(
   onPressed: () => print('Pressed'),
   child: Text('Press me'),
+)
+```
+
+### NeonRadio
+
+A radio button widget with neon styling.
+
+```dart
+NeonRadio(
+  value: isSelected,
+  onChanged: (value) => setState(() => isSelected = value ?? false),
 )
 ```
 
