@@ -18,6 +18,7 @@ dart pub add neon_ui
 
 - [NeonButton](#neonbutton)
 - [NeonCheckbox](#neoncheckbox)
+- [NeonChip](#neonchip)
 - [NeonCircularProgressIndicator](#neoncircularprogressindicator)
 - [NeonContainer](#neoncontainer)
 - [NeonDecoratedBox](#neondecoratedbox)
@@ -47,6 +48,16 @@ A checkbox widget with neon styling.
 NeonCheckbox(
   value: isChecked,
   onChanged: (value) => setState(() => isChecked = value ?? false),
+)
+```
+
+### NeonChip
+
+A chip widget with neon styling and a mild glow effect.
+
+```dart
+NeonChip(
+  label: 'Chip',
 )
 ```
 

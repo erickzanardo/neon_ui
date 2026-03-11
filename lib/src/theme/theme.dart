@@ -67,6 +67,35 @@ class NeonCircularProgressIndicatorTheme
   }
 }
 
+/// {@template neon_chip_theme}
+/// Theme extension for neon chip styles.
+/// {@endtemplate}
+class NeonChipTheme extends ThemeExtension<NeonChipTheme> {
+  /// {@macro neon_chip_theme}
+  const NeonChipTheme({this.borderRadius = 16.0});
+
+  /// The border radius of the neon chip.
+  final double borderRadius;
+
+  @override
+  ThemeExtension<NeonChipTheme> copyWith({double? borderRadius}) {
+    return NeonChipTheme(borderRadius: borderRadius ?? this.borderRadius);
+  }
+
+  @override
+  ThemeExtension<NeonChipTheme> lerp(
+    covariant ThemeExtension<NeonChipTheme>? other,
+    double t,
+  ) {
+    if (other is! NeonChipTheme) {
+      return this;
+    }
+    return NeonChipTheme(
+      borderRadius: lerpDouble(borderRadius, other.borderRadius, t)!,
+    );
+  }
+}
+
 /// {@template neon_container_theme}
 /// Theme extension for neon container styles.
 /// {@endtemplate}
@@ -264,6 +293,7 @@ class NeonUITheme {
     this.decorationConfig = const NeonDecorationConfig(),
     this.iconTheme = const NeonIconTheme(),
     this.buttonTheme = const NeonButtonTheme(),
+    this.chipTheme = const NeonChipTheme(),
     this.containerTheme = const NeonContainerTheme(),
     this.circularProgressIndicatorTheme =
         const NeonCircularProgressIndicatorTheme(),
@@ -280,6 +310,9 @@ class NeonUITheme {
 
   /// The neon button theme.
   final NeonButtonTheme buttonTheme;
+
+  /// The neon chip theme.
+  final NeonChipTheme chipTheme;
 
   /// The neon container theme.
   final NeonContainerTheme containerTheme;
@@ -301,6 +334,7 @@ class NeonUITheme {
         decorationConfig,
         iconTheme,
         buttonTheme,
+        chipTheme,
         containerTheme,
         circularProgressIndicatorTheme,
       ],
