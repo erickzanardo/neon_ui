@@ -1,0 +1,17 @@
+name: Task
+description: Create a general task or chore
+title: "[Task]: "
+labels: ["task"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the task
+      description: Explain your task here
+      value: | 
+        ## Requirements
+        - [ ] Tests are added for the added code
+        - [ ] Existing tests passes
+        - [ ] No dart analyzer issues reported, including `info` ones
+        - [ ] Dart format passes
+        - [ ] Execute `dart run build_runner build` in the widgetbook folder if you changed any use cases
