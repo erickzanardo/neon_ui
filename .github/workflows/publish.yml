@@ -1,0 +1,39 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Add pub.dev token
+        run: |
+          echo "${{ secrets.PUB_DEV_API_TOKEN }}" | dart pub token add https://pub.dev
+
+      - name: Get version from pubspec.yaml
+        id: version
+        run: |
+          VERSION=$(grep -E "^version:" pubspec.yaml | sed 's/version: //' | tr -d ' ')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Dry run publish to pub.dev
+        run: dart pub publish --dry-run
+
+      - name: Publish to pub.dev
+        run: dart pub publish
+
+      - name: Create git tag
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git tag v${{ steps.version.outputs.version }}
+          git push origin v${{ steps.version.outputs.version }}
