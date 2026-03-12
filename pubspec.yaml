@@ -1,6 +1,6 @@
 name: neon_ui
 description: A Flutter UI library inspired by Neon Vibes
-version: 0.1.0+1
+version: 0.0.1
 publish_to: none
 
 environment:
