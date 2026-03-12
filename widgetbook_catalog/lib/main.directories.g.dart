@@ -11,6 +11,10 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:widgetbook/widgetbook.dart' as _widgetbook;
+import 'package:widgetbook_catalog/material_badge_use_case.dart'
+    as _widgetbook_catalog_material_badge_use_case;
+import 'package:widgetbook_catalog/material_text_field_use_case.dart'
+    as _widgetbook_catalog_material_text_field_use_case;
 import 'package:widgetbook_catalog/neon_button_use_case.dart'
     as _widgetbook_catalog_neon_button_use_case;
 import 'package:widgetbook_catalog/neon_checkbox_use_case.dart'
@@ -35,6 +39,31 @@ import 'package:widgetbook_catalog/neon_radio_use_case.dart'
     as _widgetbook_catalog_neon_radio_use_case;
 
 final directories = <_widgetbook.WidgetbookNode>[
+  _widgetbook.WidgetbookFolder(
+    name: 'material',
+    children: [
+      _widgetbook.WidgetbookComponent(
+        name: 'Badge',
+        useCases: [
+          _widgetbook.WidgetbookUseCase(
+            name: 'Default',
+            builder: _widgetbook_catalog_material_badge_use_case
+                .buildMaterialBadgeUseCase,
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookComponent(
+        name: 'TextField',
+        useCases: [
+          _widgetbook.WidgetbookUseCase(
+            name: 'Default',
+            builder: _widgetbook_catalog_material_text_field_use_case
+                .buildMaterialTextFieldUseCase,
+          ),
+        ],
+      ),
+    ],
+  ),
   _widgetbook.WidgetbookFolder(
     name: 'widgets',
     children: [
