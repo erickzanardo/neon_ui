@@ -339,6 +339,10 @@ class NeonUITheme {
         circularProgressIndicatorTheme,
       ],
       colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
+      inputDecorationTheme: const InputDecorationTheme(
+        border: OutlineInputBorder(),
+        contentPadding: EdgeInsets.symmetric(horizontal: 8),
+      ),
     );
   }
 }
